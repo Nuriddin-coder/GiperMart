@@ -22,12 +22,17 @@ import { LogoIcon } from "../../assets/icons/logo-icon";
 import { PhoneIcon } from "../../assets/icons/phone-icon";
 import { MenuIcon } from "../../assets/icons/menu-icon";
 import { SearchIcon } from "../../assets/icons/search-icon";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Header = () => {
   const [value, setValue] = React.useState("");
   const search = useDebaunce(value);
   const { data, isLoading } = useGetAllData(search);
-
+  const location = useLocation();
+  useEffect(() => {
+    setValue("");
+  }, [location]);
   return (
     <div className="container pt-4">
       {/* Mobile Header */}

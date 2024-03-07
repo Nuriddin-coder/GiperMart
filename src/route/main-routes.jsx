@@ -3,7 +3,7 @@ import React from "react";
 //// Component's:
 import { Home } from "../pages/home";
 import { CatalogSingle } from "../pages/catalogSingle";
-import { SearchSingle } from "../pages/searchSingle";
+import { ProductSingle } from "../pages/productSingle";
 
 export const pages = [
   {
@@ -17,7 +17,7 @@ export const pages = [
   },
   {
     id: 3,
-    element: <SearchSingle />,
-    path: "/search-single/:id",
+    element: <ProductSingle />,
+    path: "/product-single/:id",
   },
 ];

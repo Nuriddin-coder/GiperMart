@@ -26,6 +26,7 @@ export default {
         chefsHat: "#F2F4F7",
         gray3: "#828282",
         clrF6F6F6: "#F6F6F6",
+        starClr: "#FFCE39",
       },
       fontFamily: {
         joast: "Jost",
@@ -34,7 +35,8 @@ export default {
         forCatalog: "550px",
         tablet: "768px",
         desktop: "980px",
-        forSkleton: "1148px"
+        forSkleton: "1148px",
+        bigScreen: "1200px",
       },
       boxShadow: {
         shadowArrow: " 0px 1px 5px 1px #efe1e1",
