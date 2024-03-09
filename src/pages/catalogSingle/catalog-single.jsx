@@ -4,11 +4,11 @@ import { useGetCatalogSingle } from "../../pages/catalogSingle/query/useGetCatal
 import { CatalogSingleSkleton } from "../../components/skleton/catalogSingle";
 import { MainItemCard } from "../../components/mainItemCard";
 
+
 export const CatalogSingle = () => {
   const [page, setPage] = React.useState(1);
   const { slug } = useParams();
   const { data, isLoading } = useGetCatalogSingle(slug, page);
-  console.log(data);
 
   const buttons = Array(data?.pageSize).fill(null);
 

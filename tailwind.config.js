@@ -27,6 +27,7 @@ export default {
         gray3: "#828282",
         clrF6F6F6: "#F6F6F6",
         starClr: "#FFCE39",
+        ededClr: "#EDEDED",
       },
       fontFamily: {
         joast: "Jost",

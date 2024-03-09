@@ -4,6 +4,8 @@ import React from "react";
 import { Home } from "../pages/home";
 import { CatalogSingle } from "../pages/catalogSingle";
 import { ProductSingle } from "../pages/productSingle";
+import { BrandSingle } from "../pages/brandSingle";
+import { Basket } from "../pages/basket";
 
 export const pages = [
   {
@@ -19,5 +21,15 @@ export const pages = [
     id: 3,
     element: <ProductSingle />,
     path: "/product-single/:id",
+  },
+  {
+    id: 4,
+    element: <BrandSingle />,
+    path: "/brand-single/:key",
+  },
+  {
+    id: 4,
+    element: <Basket />,
+    path: "/basket",
   },
 ];

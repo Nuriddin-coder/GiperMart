@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 ///// Import Hook's:
 import useDebaunce from "../../hook/useDebaunce";
 import { useGetAllData } from "../../search/service/query/useGetAllData";
+import { useSelector } from "react-redux";
 
 //// import Component's:
 import { CatalogModal } from "../../components/catalogModal";
 import { SearchCard } from "../../search/search-card";
-import { SearchSkleton } from "../../components/skleton/search";
 
 ///// import Img's;
 import LogoImgDesktop from "../../assets/imgs/logo-img.png";
@@ -33,6 +33,8 @@ export const Header = () => {
   useEffect(() => {
     setValue("");
   }, [location]);
+
+  const { count } = useSelector((state) => state.product);
   return (
     <div className="container pt-4">
       {/* Mobile Header */}
@@ -47,8 +49,11 @@ export const Header = () => {
           <Link>
             <HeartIcon />
           </Link>
-          <Link>
+          <Link className="relative" to="/basket">
             <BagIcon />
+            <span className="bg-red-500 text-white w-[17px] h-[17px] pl-[5px] absolute top-[-6px] right-[-3px] rounded-full text-[12px]">
+              {count}
+            </span>
           </Link>
         </div>
       </div>
@@ -89,21 +94,9 @@ export const Header = () => {
 
           {/* Search products */}
           <div className="max-h-[200px] max-w-[320px] overflow-y-auto absolute bg-white right-0 forCatalog:max-w-[500px] left-[0px] mx-auto top-[115px] z-20">
-            {isLoading ? (
-              <div className="flex flex-col gap-y-1">
-                <SearchSkleton />
-                <SearchSkleton />
-                <SearchSkleton />
-                <SearchSkleton />
-                <SearchSkleton />
-              </div>
-            ) : (
-              <>
-                {value.length > 0
-                  ? data?.map((item) => <SearchCard key={item.id} {...item} />)
-                  : ""}
-              </>
-            )}
+            {value.length > 0
+              ? data?.map((item) => <SearchCard key={item.id} {...item} />)
+              : ""}
           </div>
         </div>
       </div>
@@ -143,25 +136,9 @@ export const Header = () => {
 
         {/* Search products */}
         <div className="max-h-[400px] w-[650px] absolute overflow-y-auto bg-white right-0 left-5 mx-auto top-[50px] z-20">
-          {isLoading ? (
-            <div className="flex flex-col gap-y-1">
-              <SearchSkleton />
-              <SearchSkleton />
-              <SearchSkleton />
-              <SearchSkleton />
-              <SearchSkleton />
-              <SearchSkleton />
-              <SearchSkleton />
-              <SearchSkleton />
-              <SearchSkleton />
-            </div>
-          ) : (
-            <>
-              {value.length > 0
-                ? data?.map((item) => <SearchCard key={item.id} {...item} />)
-                : ""}
-            </>
-          )}
+          {value.length > 0
+            ? data?.map((item) => <SearchCard key={item.id} {...item} />)
+            : ""}
         </div>
 
         <div className="flex items-center gap-[32px]">
@@ -173,11 +150,11 @@ export const Header = () => {
             <HeartIcon />
             <p className="text-M3LightOnBackground">Избранное</p>
           </Link>
-          <Link className="flex flex-col items-center relative">
+          <Link to="/basket" className="flex flex-col items-center relative">
             <BagIcon />
             <p className="text-M3LightOnBackground">Корзина</p>
             <span className="pl-[6px] text-[14px] text-white bg-M3RefPrimary50 rounded-full w-[20px] absolute left-[30px] top-[-8px] h-[20px]">
-              0
+              {count}
             </span>
           </Link>
         </div>

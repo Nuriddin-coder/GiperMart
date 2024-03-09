@@ -1,12 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const CatalogCard = (props) => {
+  const navigate = useNavigate();
+
+  const navigateSingle = () => {
+    navigate(`/catalog-single/${props.categoryKey}`);
+  };
 
   return (
-    <Link
-      to={`/catalog-single/${props.categoryKey}`}
-      className=" bg-clrF6F6F6 inline-block  py-6 forCatalog:py-9 pl-[5px] tablet:pl-[25px] tablet:w-[280px]"
+    <div
+      onClick={navigateSingle}
+      className=" bg-clrF6F6F6 inline-block cursor-pointer  py-6 forCatalog:py-9 pl-[5px] tablet:pl-[25px] tablet:w-[280px]"
     >
       <div className="flex items-center gap-4 ">
         <img
@@ -16,6 +21,6 @@ export const CatalogCard = (props) => {
         />
         <p className="w-[99px] text-[12px] text-clr333">{props.text}</p>
       </div>
-    </Link>
+    </div>
   );
 };

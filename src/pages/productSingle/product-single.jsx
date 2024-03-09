@@ -1,5 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/reducer/product-reducer";
 
 ///// Import Data:
 import { useGetAllDataId } from "../../search/service/query/useGetAllDataId";
@@ -18,7 +20,12 @@ export const ProductSingle = () => {
   const [opneAccardion, setOpenAccardion] = React.useState(false);
   const { id } = useParams();
   const { data, isLoading } = useGetAllDataId(id);
-  console.log(data);
+
+  const dispatch = useDispatch(data);
+
+  const addItemFn = () => {
+    dispatch(addProduct(data));
+  };
 
   return (
     <div className="container py-8">
@@ -259,7 +266,10 @@ export const ProductSingle = () => {
 
           {/* button to Bag */}
           <div className="text-center tablet:text-start bigScreen:m-0 mt-5 tablet:mt-6 tablet:mb-[50px]">
-            <button className="bg-gipermart text-M3LightOnTertiaryContainer py-4 w-[320px]">
+            <button
+              onClick={addItemFn}
+              className="bg-gipermart text-M3LightOnTertiaryContainer py-4 w-[320px]"
+            >
               В корзину
             </button>
           </div>
@@ -283,7 +293,10 @@ export const ProductSingle = () => {
 
         {/* button to Bag */}
         <div className="text-center tablet:text-start mt-5 tablet:mt-6 tablet:mb-[50px]">
-          <button className="bg-gipermart text-M3LightOnTertiaryContainer py-4 w-[320px]">
+          <button
+            onClick={addItemFn}
+            className="bg-gipermart text-M3LightOnTertiaryContainer py-4 w-[320px]"
+          >
             В корзину
           </button>
         </div>

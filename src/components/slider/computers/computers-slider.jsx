@@ -1,7 +1,7 @@
 import React from "react";
-import { useGetPhone } from "./service/query/useGetPhone";
-import { MainItemCard } from "../../mainItemCard";
 import Slider from "react-slick";
+import { MainItemCard } from "../../mainItemCard";
+import { useGetComputer } from "../../../service/query/useGetComputer";
 
 //// Import Component's:
 import { CatalogSingleSkleton } from "../../skleton/catalogSingle";
@@ -34,8 +34,8 @@ function SamplePrevArrow(props) {
   );
 }
 
-export const ProductsSlider = () => {
-  const { data, isLoading } = useGetPhone();
+export const ComputerSlider = () => {
+  const { data, isLoading } = useGetComputer();
 
   const settings = {
     infinite: true,
@@ -67,7 +67,7 @@ export const ProductsSlider = () => {
           <CatalogSingleSkleton />
           <CatalogSingleSkleton />
           <CatalogSingleSkleton />
-          <CatalogSingleSkleton /> 
+          <CatalogSingleSkleton />
         </div>
       ) : (
         <>
