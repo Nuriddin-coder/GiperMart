@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import useDebaunce from "../../hook/useDebaunce";
 import { useGetAllData } from "../../search/service/query/useGetAllData";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 //// import Component's:
 import { CatalogModal } from "../../components/catalogModal";
@@ -23,18 +24,19 @@ import { PhoneIcon } from "../../assets/icons/phone-icon";
 import { MenuIcon } from "../../assets/icons/menu-icon";
 import { SearchIcon } from "../../assets/icons/search-icon";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { HeartRedIcon } from "../../assets/icons/heart-red-icon";
 
 export const Header = () => {
   const [value, setValue] = React.useState("");
   const search = useDebaunce(value);
-  const { data, isLoading } = useGetAllData(search);
+  const { data } = useGetAllData(search);
   const location = useLocation();
   useEffect(() => {
     setValue("");
   }, [location]);
 
   const { count } = useSelector((state) => state.product);
+  const { favorites } = useSelector((state) => state.favoritesPr);
   return (
     <div className="container pt-4">
       {/* Mobile Header */}
@@ -46,9 +48,15 @@ export const Header = () => {
           <LogoIcon />
         </Link>
         <div className="flex items-center gap-4">
-          <Link>
-            <HeartIcon />
-          </Link>
+          {favorites.length ? (
+            <Link to="/favorites">
+              <HeartRedIcon />
+            </Link>
+          ) : (
+            <Link to="/favorites">
+              <HeartIcon />
+            </Link>
+          )}
           <Link className="relative" to="/basket">
             <BagIcon />
             <span className="bg-red-500 text-white w-[17px] h-[17px] pl-[5px] absolute top-[-6px] right-[-3px] rounded-full text-[12px]">
@@ -146,10 +154,24 @@ export const Header = () => {
             <ProfileIcon />
             <p className="text-M3LightOnBackground">Войти</p>
           </Link>
-          <Link className="desktop:flex hidden flex-col items-center">
-            <HeartIcon />
-            <p className="text-M3LightOnBackground">Избранное</p>
-          </Link>
+
+          {favorites.length ? (
+            <Link
+              to="/favorites"
+              className="desktop:flex hidden flex-col items-center"
+            >
+              <HeartRedIcon />
+              <p className="text-M3LightOnBackground">Избранное</p>
+            </Link>
+          ) : (
+            <Link
+              to="/favorites"
+              className="desktop:flex hidden flex-col items-center"
+            >
+              <HeartIcon />
+              <p className="text-M3LightOnBackground">Избранное</p>
+            </Link>
+          )}
           <Link to="/basket" className="flex flex-col items-center relative">
             <BagIcon />
             <p className="text-M3LightOnBackground">Корзина</p>

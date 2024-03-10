@@ -6,6 +6,8 @@ import { CatalogSingle } from "../pages/catalogSingle";
 import { ProductSingle } from "../pages/productSingle";
 import { BrandSingle } from "../pages/brandSingle";
 import { Basket } from "../pages/basket";
+import { Order } from "../pages/order";
+import { Favorites } from "../pages/favorites";
 
 export const pages = [
   {
@@ -31,5 +33,15 @@ export const pages = [
     id: 4,
     element: <Basket />,
     path: "/basket",
+  },
+  {
+    id: 5,
+    element: <Order />,
+    path: "/order",
+  },
+  {
+    id: 6,
+    element: <Favorites />,
+    path: "/favorites",
   },
 ];

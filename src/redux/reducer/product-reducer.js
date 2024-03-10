@@ -13,7 +13,6 @@ const product = createSlice({
   reducers: {
     addProduct: (state, action) => {
       const idf = state.products.find((item) => item.id === action.payload.id);
-      console.log(action.payload);
 
       if (!idf) {
         return {

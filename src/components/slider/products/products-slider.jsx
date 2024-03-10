@@ -67,7 +67,7 @@ export const ProductsSlider = () => {
           <CatalogSingleSkleton />
           <CatalogSingleSkleton />
           <CatalogSingleSkleton />
-          <CatalogSingleSkleton /> 
+          <CatalogSingleSkleton />
         </div>
       ) : (
         <>
