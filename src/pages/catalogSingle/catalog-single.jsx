@@ -73,7 +73,7 @@ export const CatalogSingle = () => {
           })}
         </div>
       </div>
-      <form className="mt-[50px]">
+      <form className="mt-[50px] hidden bigScreen:inline-block">
         {att?.map((item, i) => (
           <div key={i}>
             <h1 className="text-clr333 font-semibold pb-2 mt-4">
