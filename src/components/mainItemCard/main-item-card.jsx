@@ -1,5 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
+import { loadState } from "../../config/storage";
 
 ///// Import Redux reducers:
 import { addProduct, removeProduct } from "../../redux/reducer/product-reducer";
@@ -8,6 +9,7 @@ import {
   deleteFavorite,
 } from "../../redux/reducer/favorite-reducer";
 import { useDispatch } from "react-redux";
+
 
 ////// import Icon's:
 import { MbBagIcon } from "../../assets/icons/mb-bag-icon";
@@ -95,12 +97,22 @@ export const MainItemCard = (props) => {
         </p>
 
         {/* Mobile Bag Icon */}
-        <button
-          onClick={addItemFn}
-          className="bg-gipermart px-1 py-1 rounded-md tablet:hidden"
-        >
-          <MbBagIcon />
-        </button>
+        {showDel ? (
+          <button
+            onClick={addItemFn}
+            className="bg-gipermart tablet:hidden px-1 py-1 rounded-md"
+          >
+            <MbBagIcon />
+          </button>
+        ) : (
+          <button
+            onClick={deleteItemBasket}
+            className="bg-M3RefPrimary50  tablet:hidden px-1 py-1 rounded-md"
+          >
+            <DeleteWhiteIcon />
+          </button>
+        )}
+
 
         {/* main Bag Icon */}
         {showDel ? (

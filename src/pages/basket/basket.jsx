@@ -12,6 +12,7 @@ import NoData from "../../assets/imgs/no-data.jpg";
 export const Basket = () => {
   const { products, totalPrice, count } = useSelector((state) => state.product);
 
+
   const navigate = useNavigate();
 
   const ofarmet = () => {

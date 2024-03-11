@@ -49,6 +49,7 @@ export default {
         gridColMain: "repeat(auto-fit, minmax(130px, 1fr))",
         gridColTablet: "repeat(auto-fit, minmax(220px, 1fr))",
         gridColDesktop: "repeat(auto-fit, minmax(250px, 1fr))",
+        gridColCategory: "1050px 1fr",
       },
       borderRadius: {
         borderForOrder: "0 0 10px 10px",

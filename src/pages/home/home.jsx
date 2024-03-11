@@ -153,7 +153,7 @@ export const Home = () => {
           <h1 className="text-clr333 mb-6 font-medium tablet:text-[18px] desktop:text-[20px]">
             Популярные бренды :
           </h1>
-          <div className="flex gap-8 flex-wrap justify-center max-w-[900px] mx-auto">
+          <div className="flex gap-8 flex-wrap justify-center max-w-[1000px] mx-auto">
             {BrandsData?.map((item) => (
               <BrandsCard key={item.id} {...item} />
             ))}

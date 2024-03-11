@@ -6,7 +6,6 @@ import { OrderCard } from "../../components/orderCard";
 import { CheckboxCustom } from "../../components/checkboxCustom";
 
 ///// Import Icon's:
-import { ClickIcon } from "../../assets/icons/click-icon";
 import { PaymeIcon } from "../../assets/icons/payme-icon";
 
 export const Order = () => {

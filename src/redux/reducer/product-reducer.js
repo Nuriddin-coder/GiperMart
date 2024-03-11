@@ -39,7 +39,7 @@ const product = createSlice({
     toggleAmount: (state, action) => {
       if (action.payload.type === "plus") {
         const newProduct = state.products.map((item) => {
-          const price = Number(item.price.replace(/\s+/g, ""));
+          const price = Number(item.price.replace(/\D/g, ""));
 
           if (item.id === action.payload.id) {
             return {
@@ -54,7 +54,7 @@ const product = createSlice({
       }
       if (action.payload.type === "minus") {
         const newProduct = state.products.map((item) => {
-          const price = Number(item.price.replace(/\s+/g, ""));
+          const price = Number(item.price.replace(/\D/g, ""));
 
           if (item.id === action.payload.id) {
             return {
@@ -71,7 +71,10 @@ const product = createSlice({
     totalPrice: (state) => {
       return {
         ...state,
-        totalPrice: state.products.reduce((a, b) => a + b.userPrice, 0),
+        totalPrice: state.products.reduce(
+          (a, b) => a + Number(b.userPrice.replace(/\D/g, "")),
+          0
+        ),
       };
     },
     setCount: (state) => {
