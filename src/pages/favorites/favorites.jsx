@@ -4,7 +4,7 @@ import NoData from "../../assets/imgs/no-data.jpg";
 
 import { FavoriteCard } from "../../components/favorideCard";
 
-export const Favorites = () => {
+const Favorites = () => {
   const { favorites } = useSelector((state) => state.favoritesPr);
 
   return (
@@ -23,3 +23,5 @@ export const Favorites = () => {
     </div>
   );
 };
+
+export default Favorites;

@@ -17,7 +17,7 @@ import { HeartIcon } from "../../assets/icons/heart-icon";
 import { AccardionTopIcon } from "../../assets/icons/accardion-top-icon";
 import { AccardionBottomIcon } from "../../assets/icons/accardion-bottom-icon";
 
-export const ProductSingle = () => {
+const ProductSingle = () => {
   const [opneAccardion, setOpenAccardion] = React.useState(false);
   const { id } = useParams();
   const { data, isLoading } = useGetAllDataId(id);
@@ -451,3 +451,5 @@ export const ProductSingle = () => {
     </div>
   );
 };
+
+export default ProductSingle;

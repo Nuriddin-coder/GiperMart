@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
+import { Suspense } from "react";
 
 ///// import Component:
 import { MainLayout } from "./layout/main-layout";
-import { pages } from "./route/main-routes";
+import pages from "./route/main-routes";
 
 function App() {
   return (
@@ -14,7 +15,11 @@ function App() {
               index={route.path ? false : true}
               path={route.path}
               key={route.id}
-              element={route.element}
+              element={
+                <Suspense fallback={<h1>Loading ...</h1>}>
+                  {route.element}
+                </Suspense>
+              }
             />
           ))}
         </Route>

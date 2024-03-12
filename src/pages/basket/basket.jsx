@@ -9,9 +9,8 @@ import { useNavigate } from "react-router-dom";
 //// import Img's:
 import NoData from "../../assets/imgs/no-data.jpg";
 
-export const Basket = () => {
+const Basket = () => {
   const { products, totalPrice, count } = useSelector((state) => state.product);
-
 
   const navigate = useNavigate();
 
@@ -106,3 +105,5 @@ export const Basket = () => {
     </>
   );
 };
+
+export default Basket;

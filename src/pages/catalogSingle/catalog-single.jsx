@@ -7,7 +7,7 @@ import { useGetSort } from "../../service/query/useGetSort";
 import { useDispatch, useSelector } from "react-redux";
 import { createSort, clearSort } from "../../redux/reducer/sort-reducer";
 
-export const CatalogSingle = () => {
+const CatalogSingle = () => {
   const { value } = useSelector((state) => state.sort);
 
   const [page, setPage] = React.useState(1);
@@ -107,3 +107,5 @@ export const CatalogSingle = () => {
     </div>
   );
 };
+
+export default CatalogSingle;

@@ -97,7 +97,7 @@ export const Footer = () => {
         </div>
 
         {/* Accardions */}
-        <div className="desktop:hidden">
+        <div className="desktop:hidden max-w-[350px]">
           {/* Accardion 1 */}
           <div className="mt-4 border-[1px] border-clr999 rounded-md max-w-[350px]">
             <button

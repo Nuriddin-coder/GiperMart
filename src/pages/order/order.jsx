@@ -8,7 +8,7 @@ import { CheckboxCustom } from "../../components/checkboxCustom";
 ///// Import Icon's:
 import { PaymeIcon } from "../../assets/icons/payme-icon";
 
-export const Order = () => {
+const Order = () => {
   const { products, totalPrice } = useSelector((state) => state.product);
 
   const submit = (e) => {
@@ -199,3 +199,5 @@ export const Order = () => {
     </div>
   );
 };
+
+export default Order;

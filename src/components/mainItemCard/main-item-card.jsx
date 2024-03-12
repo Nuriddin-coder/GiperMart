@@ -8,8 +8,7 @@ import {
   saveProduct,
   deleteFavorite,
 } from "../../redux/reducer/favorite-reducer";
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 
 ////// import Icon's:
 import { MbBagIcon } from "../../assets/icons/mb-bag-icon";
@@ -21,16 +20,20 @@ import { Link } from "react-router-dom";
 
 export const MainItemCard = (props) => {
   const dispatch = useDispatch();
-  const [show, setShow] = React.useState(true);
-  const [showDel, setshowDel] = React.useState(true);
+  const [showLike, setShowLike] = React.useState(false);
+  const [addToCard, setAddToCard] = React.useState(false);
   const id = props.id;
+  const { products } = useSelector((state) => state.product);
+  const { favorites } = useSelector((state) => state.favoritesPr);
 
-  {
-    /* Save Basket */
-  }
-  const addItemFn = () => {
+  React.useEffect(() => {
+    setAddToCard(products.some((item) => item.id === id));
+    setShowLike(favorites.some((item) => item.id === id));
+  }, [products, id, favorites]);
+
+  /* Save Basket */
+  const addCardFn = () => {
     dispatch(addProduct(props));
-    setshowDel(!showDel);
     toast.success("added Basket!", {
       position: "top-right",
       autoClose: 1000,
@@ -43,7 +46,6 @@ export const MainItemCard = (props) => {
   }
   const saveItemFn = () => {
     dispatch(saveProduct(props));
-    setShow(!show);
     toast.success("added Favorites!", {
       position: "top-right",
       autoClose: 500,
@@ -97,37 +99,36 @@ export const MainItemCard = (props) => {
         </p>
 
         {/* Mobile Bag Icon */}
-        {showDel ? (
-          <button
-            onClick={addItemFn}
-            className="bg-gipermart tablet:hidden px-1 py-1 rounded-md"
-          >
-            <MbBagIcon />
-          </button>
-        ) : (
+        {addToCard ? (
           <button
             onClick={deleteItemBasket}
             className="bg-M3RefPrimary50  tablet:hidden px-1 py-1 rounded-md"
           >
             <DeleteWhiteIcon />
           </button>
+        ) : (
+          <button
+            onClick={addCardFn}
+            className="bg-gipermart tablet:hidden px-1 py-1 rounded-md"
+          >
+            <MbBagIcon />
+          </button>
         )}
 
-
         {/* main Bag Icon */}
-        {showDel ? (
-          <button
-            onClick={addItemFn}
-            className="bg-gipermart hidden tablet:inline-block px-1 py-1 rounded-md"
-          >
-            <BagIcon />
-          </button>
-        ) : (
+        {addToCard ? (
           <button
             onClick={deleteItemBasket}
             className="bg-M3RefPrimary50 hidden tablet:inline-block px-1 py-1 rounded-md"
           >
             <DeleteWhiteIcon />
+          </button>
+        ) : (
+          <button
+            onClick={addCardFn}
+            className="bg-gipermart hidden tablet:inline-block px-1 py-1 rounded-md"
+          >
+            <BagIcon />
           </button>
         )}
       </div>
@@ -139,13 +140,13 @@ export const MainItemCard = (props) => {
           View Details
         </button>
       </Link>
-      {show ? (
-        <button onClick={saveItemFn} className="absolute right-0 top-2">
-          <HeartIcon />
-        </button>
-      ) : (
+      {showLike ? (
         <button onClick={deleteItemFn} className="absolute right-0 top-2">
           <HeartRedIcon />
+        </button>
+      ) : (
+        <button onClick={saveItemFn} className="absolute right-0 top-2">
+          <HeartIcon />
         </button>
       )}
     </div>

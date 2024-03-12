@@ -1,15 +1,23 @@
 import React from "react";
+import { lazy } from "react";
 
 //// Component's:
-import { Home } from "../pages/home";
-import { CatalogSingle } from "../pages/catalogSingle";
-import { ProductSingle } from "../pages/productSingle";
-import { BrandSingle } from "../pages/brandSingle";
-import { Basket } from "../pages/basket";
-import { Order } from "../pages/order";
-import { Favorites } from "../pages/favorites";
 
-export const pages = [
+
+const Home = lazy(() => import("../pages/home"));
+
+const CatalogSingle = lazy(() =>
+  import("../pages/catalogSingle")
+);
+const ProductSingle = lazy(() =>
+  import("../pages/productSingle")
+);
+const BrandSingle = lazy(() => import("../pages/brandSingle"));
+const Basket = lazy(() => import("../pages/basket"));
+const Order = lazy(() => import("../pages/order"));
+const Favorites = lazy(() => import("../pages/favorites"));
+
+const pages = [
   {
     id: 1,
     element: <Home />,
@@ -45,3 +53,5 @@ export const pages = [
     path: "/favorites",
   },
 ];
+
+export default pages;

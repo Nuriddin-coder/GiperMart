@@ -20,7 +20,7 @@ import SaleImg2 from "../../assets/imgs/sale-img2.png";
 import SaleImg3 from "../../assets/imgs/sale-img3.png";
 import { Link } from "react-router-dom";
 
-export const Home = () => {
+const Home = () => {
   const { data: PhoneData } = useGetPhone();
   const { data: NotebookData } = useGetNotebook();
   const { data: ComputerData } = useGetComputer();
@@ -163,3 +163,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;
