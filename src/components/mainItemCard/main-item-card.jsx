@@ -71,7 +71,6 @@ export const MainItemCard = (props) => {
   }
   const deleteItemBasket = () => {
     dispatch(removeProduct({ id }));
-    setshowDel(!showDel);
     toast.info("deleted", {
       position: "top-right",
       autoClose: 500,
